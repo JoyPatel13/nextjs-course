@@ -4,7 +4,6 @@ import ServiceList from "@/components/ServiceList";
 const Services = () => {
   return (
     <>
-      <Header />
       <div>
         <h1>Our Services</h1>
         <ServiceList />

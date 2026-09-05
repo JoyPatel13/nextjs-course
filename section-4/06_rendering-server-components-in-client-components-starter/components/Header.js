@@ -1,14 +1,14 @@
 "use client"; // <--- important to mark this as a Client Component
 
 import Link from "next/link";
-import { useState } from "react";
 import { usePathname } from "next/navigation"; // for checking current route
 import SunIcon from "./SunIcon";
 import MoonIcon from "./MoonIcon";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Header() {
-  const isDark = true;
   const pathname = usePathname();
+  const {isDark, toggleTheme} =  useTheme();
   return (
     <nav className="navbar">
       <ul>
@@ -30,20 +30,18 @@ export default function Header() {
         </li>
         <li>
           <Link
-            href="/services"
+            href="/blogs"
             className={
-              pathname === "/services" ? "nav-link active" : "nav-link"
+              pathname === "/blogs" ? "nav-link active" : "nav-link"
             }
           >
-            Services
+            Blogs
           </Link>
         </li>
       </ul>
 
       <button
-        onClick={() => {
-          console.log("Theme button clicked");
-        }}
+        onClick={toggleTheme}
       >
         {isDark ? <SunIcon /> : <MoonIcon />}
       </button>
